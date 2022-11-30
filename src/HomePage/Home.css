@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arima:wght@700&display=swap');
+
+.container{
+    height: 100vh;
+    padding: 0 20%;
+    padding-top: 2vh;
+    color: white !important;
+}
+.form{
+    color: white;
+}
+
+
+.app-name h1{
+    font-family: 'Courgette', cursive;
+    font-size: 3rem !important;
+    margin-bottom: 80px;
+  }
+
+  .starting{
+     margin-top: 30px;
+  }
+  input{
+    cursor: pointer;
+    padding: 5px 10px;
+  }
+
+  .starting label{
+    color: white;
+    background-color: #624F82;
+    margin-right: 20px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-family: Arima,cursive
+
+  }
+
+  .ending{
+    margin-top: 20px;
+  }
+
+  .ending label {
+    color: white;
+    background-color: #f97b8b;
+    margin-right: 20px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-family: Arima,cursive
+  }
+
+  button{
+    margin: 10px ;
+    margin-top: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  .info{
+    margin-top: 50px;
+  }
+  .info-box{ 
+    border-radius: 30px;
+    width: min-content;
+    overflow: hidden;
+    max-width: 80%;
+    margin: 0 auto;
+  }
+  .info-box-row{
+     height: 100px;
+     width: 650px;
+     background-color: #f2eded;
+  }
+  .info-box-col{
+    border: 0.5px solid black;
+    display: inline-block;
+    height: 100%;
+    width: 16.4%;
+  }
+
+  .table table{
+    border-collapse: collapse;
+    margin: 0 auto;
+  }
+  .table table td, .table table th{
+     border: 2px solid yellow;
+     padding: 10px 20px;
+
+  }
+
+  .table-All table{
+    border-collapse: collapse;
+    margin: 0 auto;
+    background-color: #f2eded;
+    color: black;
+    min-width: 500px;
+    margin-top: 50px;
+  }
+  .table-All table td, .table-All table th{
+     border: 2px solid #6c6ce5;
+     padding: 10px 20px;
+
+  }

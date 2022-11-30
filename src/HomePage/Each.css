@@ -1,0 +1,22 @@
+.each{
+    padding-top:10px;
+    display: flex;
+    flex-direction: column;
+    color:black;
+    flex-grow: 1;
+}
+.each div{
+    flex-grow: 1;
+}
+.each .three{
+  height: 10px;
+}
+.each .two{
+    font-size: 13px;
+}
+.each div{
+    flex-grow: 1;
+}
+.each .four{
+    font-weight: 700;
+}
