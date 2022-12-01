@@ -18,6 +18,8 @@ function Home() {
     const [ret, setRet] = useState([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]);
     const [fluc,setFluc] = useState(0)
     const [best,setBest] = useState([0,0,0])
+    const [best2, setBest2] = useState([0,0,0])
+    const [best3, setBest3] = useState([0,0,0])
     const [best_day, setBestDay] = useState(100000)
     const [allFluc, setAllFluc] = useState([0,0,0])
     
@@ -27,12 +29,12 @@ function Home() {
 
     const schemeChange = (event) => {
         if(event.target.value===4) {
-            setAll(1)
             let a = [0,0,0]
             a[0] = Analyse(1);
             a[1] = Analyse(2);
             a[2] = Analyse(3);
             setAllFluc(a);
+            setAll(1)
         }
         else setScheme(event.target.value)
     }
@@ -139,7 +141,10 @@ function Home() {
       
         console.log(highest)
         setFluc((highest-lowest).toFixed(2));
-       setBest([highest,highest_two,highest_four])
+
+       if(all===0 || scheme===1) setBest([highest,highest_two,highest_four])
+       else if(scheme===2) setBest2([highest,highest_two,highest_four])
+       else setBest3([highest,highest_two,highest_four])
        setBestDay(best_day)
 
        return (highest-lowest).toFixed(2)
@@ -319,10 +324,10 @@ function Home() {
             </div> :
             <div className='table-All'>
                   <table>
-                     <tr><th>Scheme Name</th> <th>Fluctuation</th></tr>
-                     <tr><td>{allFunds[fund][0]}</td><td>{allFluc[0]}%</td></tr>
-                     <tr><td>{allFunds[fund][1]}</td><td>{allFluc[1]}%</td></tr>
-                     <tr><td>{allFunds[fund][2]}</td><td>{allFluc[2]}%</td></tr>
+                     <tr><th>Scheme Name</th> <th>Fluctuation</th><th>Monthly Investment</th><th>Bi-Monthly Investment</th><th>Weekly Investment</th></tr>
+                     <tr><td>{allFunds[fund][0]}</td><td>{allFluc[0]}%</td><td>{best[0]}</td><td>{best[1]}</td><td>{best[2]}</td></tr>
+                     <tr><td>{allFunds[fund][1]}</td><td>{allFluc[1]}%</td><td>{best2[0]}</td><td>{best2[1]}</td><td>{best2[2]}</td></tr>
+                     <tr><td>{allFunds[fund][2]}</td><td>{allFluc[2]}%</td><td>{best3[0]}</td><td>{best3[1]}</td><td>{best3[2]}</td></tr>
                   </table>
                   <button onClick={()=>setAll(0)}>Done</button>
                </div>
