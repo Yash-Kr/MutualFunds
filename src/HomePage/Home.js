@@ -171,7 +171,7 @@ function Home() {
         }
         let total_invest=total_mon*monthly_investment;
         let return_total=nav[end_yr-13][end_mon-1][day-1]*total_units;
-        let profit_percent= (return_total/total_invest)*100 ;
+        let profit_percent= ((return_total - total_invest)/total_invest)*100 ;
 
         //console.log(total_mon*monthly_investment + " " + return_total)
         return profit_percent
@@ -192,7 +192,7 @@ function Home() {
         }
         let total_invest=total_mon*monthly_investment*2;
         let return_total=nav[end_yr-13][end_mon-1][29]*total_units;
-        let profit_percent= (return_total/total_invest)*100 ;
+        let profit_percent= ((return_total - total_invest)/total_invest)*100 ;
     
         //console.log(total_mon*monthly_investment + " " + return_total)
     
@@ -216,7 +216,7 @@ function Home() {
         }
         let total_invest=total_mon*monthly_investment*4;
         let return_total=nav[end_yr-13][end_mon-1][day4-1]*total_units;
-        let profit_percent= (return_total/total_invest)*100 ;
+        let profit_percent= ((return_total - total_invest)/total_invest)*100 ;
     
             //console.log(total_mon*monthly_investment + " " + return_total)
     
