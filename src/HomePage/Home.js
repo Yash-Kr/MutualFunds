@@ -18,6 +18,7 @@ function Home() {
     const [ret, setRet] = useState([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]);
     const [fluc,setFluc] = useState(0)
     const [best,setBest] = useState([0,0,0])
+    const [best1, setBest1] = useState([0,0,0])
     const [best2, setBest2] = useState([0,0,0])
     const [best3, setBest3] = useState([0,0,0])
     const [best_day, setBestDay] = useState(100000)
@@ -29,21 +30,23 @@ function Home() {
 
     const schemeChange = (event) => {
         if(event.target.value===4) {
-            let a = [0,0,0]
-            a[0] = Analyse(1);
-            a[1] = Analyse(2);
-            a[2] = Analyse(3);
-            setAllFluc(a);
+            setScheme(event.target.value)
             setAll(1)
+            let a = [0,0,0]
+            a[0] = Analyse(1,1);
+            a[1] = Analyse(2,1);
+            a[2] = Analyse(3,1);
+            setAllFluc(a);
+           
         }
         else setScheme(event.target.value)
     }
 
     const dummy = ["-","-","-"]
-    const templeton = ["Templeton India Value GR","Templeton India Equity Income Dir Gr","Templeton India Value Dir Gr"]
-    const hdfc = ["HDFC Flexi Cap GR", "HDFC Arbitrage Dir IDCW Quaterly","HDFC Arbitrage Wholesale Normal IDCW"]
-    const icici = ["Icici Prudentials All Seasons Bond Annual IDCW","ICICI Prudetials All Seasons Bond Gr","ICICI Prudentials All Seasons Bond Quaterly IDCW"]
-    const sundaram = ["Sundaram small cap DIRGR","Sundaram Aggressive Hybrid Fund Dir Monthly IDCW","Sundaram Balanced Advantage Fund Dir Gr"]
+    const templeton = ["Templeton India Value GR","Templeton India Equity Income Dir Gr","Templeton India Value Dir Gr","All"]
+    const hdfc = ["HDFC Flexi Cap GR", "HDFC Arbitrage Dir IDCW Quaterly","HDFC Arbitrage Wholesale Normal IDCW","All"]
+    const icici = ["Icici Prudentials All Seasons Bond Annual IDCW","ICICI Prudetials All Seasons Bond Gr","ICICI Prudentials All Seasons Bond Quaterly IDCW","All"]
+    const sundaram = ["Sundaram small cap DIRGR","Sundaram Aggressive Hybrid Fund Dir Monthly IDCW","Sundaram Balanced Advantage Fund Dir Gr","All"]
     
     const allFunds = [dummy,templeton,hdfc,icici,sundaram]
 
@@ -56,7 +59,7 @@ function Home() {
     }
 
  
-    const Analyse = (scheme) => {
+    const Analyse = (scheme,all) => {
         let start = getStarting();
         let end = getEnding();
         let start_month = start.substring(5)
@@ -139,12 +142,16 @@ function Home() {
         }
        
       
-        console.log(highest)
+        //console.log(highest)
         setFluc((highest-lowest).toFixed(2));
 
-       if(all===0 || scheme===1) setBest([highest,highest_two,highest_four])
-       else if(scheme===2) setBest2([highest,highest_two,highest_four])
-       else setBest3([highest,highest_two,highest_four])
+       if(all===1) 
+       {
+         if(scheme===1) setBest1([highest,highest_two,highest_four])
+         else if(scheme===2) setBest2([highest,highest_two,highest_four])
+         else setBest3([highest,highest_two,highest_four])
+       }
+       else setBest([highest,highest_two,highest_four])
        setBestDay(best_day)
 
        return (highest-lowest).toFixed(2)
@@ -324,10 +331,10 @@ function Home() {
             </div> :
             <div className='table-All'>
                   <table>
-                     <tr><th>Scheme Name</th> <th>Fluctuation</th><th>Monthly Investment</th><th>Bi-Monthly Investment</th><th>Weekly Investment</th></tr>
-                     <tr><td>{allFunds[fund][0]}</td><td>{allFluc[0]}%</td><td>{best[0]}%</td><td>{best[1]}%</td><td>{best[2]}%</td></tr>
-                     <tr><td>{allFunds[fund][1]}</td><td>{allFluc[1]}%</td><td>{best2[0]}%</td><td>{best2[1]}%</td><td>{best2[2]}%</td></tr>
-                     <tr><td>{allFunds[fund][2]}</td><td>{allFluc[2]}%</td><td>{best3[0]}%</td><td>{best3[1]}%</td><td>{best3[2]}%</td></tr>
+                     <tr><th>Scheme Name</th><th>Monthly Investment Ret.</th><th>Bi-Monthly Investment Ret.</th><th>Weekly Investment Ret.</th></tr>
+                     <tr><td>{allFunds[fund][0]}</td><td>{best1[0]}%</td><td>{best1[1]}%</td><td>{best1[2]}%</td></tr>
+                     <tr><td>{allFunds[fund][1]}</td><td>{best2[0]}%</td><td>{best2[1]}%</td><td>{best2[2]}%</td></tr>
+                     <tr><td>{allFunds[fund][2]}</td><td>{best3[0]}%</td><td>{best3[1]}%</td><td>{best3[2]}%</td></tr>
                   </table>
                   <button onClick={()=>setAll(0)}>Done</button>
                </div>
