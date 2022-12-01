@@ -325,9 +325,9 @@ function Home() {
             <div className='table-All'>
                   <table>
                      <tr><th>Scheme Name</th> <th>Fluctuation</th><th>Monthly Investment</th><th>Bi-Monthly Investment</th><th>Weekly Investment</th></tr>
-                     <tr><td>{allFunds[fund][0]}</td><td>{allFluc[0]}%</td><td>{best[0]}</td><td>{best[1]}</td><td>{best[2]}</td></tr>
-                     <tr><td>{allFunds[fund][1]}</td><td>{allFluc[1]}%</td><td>{best2[0]}</td><td>{best2[1]}</td><td>{best2[2]}</td></tr>
-                     <tr><td>{allFunds[fund][2]}</td><td>{allFluc[2]}%</td><td>{best3[0]}</td><td>{best3[1]}</td><td>{best3[2]}</td></tr>
+                     <tr><td>{allFunds[fund][0]}</td><td>{allFluc[0]}%</td><td>{best[0]}%</td><td>{best[1]}%</td><td>{best[2]}%</td></tr>
+                     <tr><td>{allFunds[fund][1]}</td><td>{allFluc[1]}%</td><td>{best2[0]}%</td><td>{best2[1]}%</td><td>{best2[2]}%</td></tr>
+                     <tr><td>{allFunds[fund][2]}</td><td>{allFluc[2]}%</td><td>{best3[0]}%</td><td>{best3[1]}%</td><td>{best3[2]}%</td></tr>
                   </table>
                   <button onClick={()=>setAll(0)}>Done</button>
                </div>
